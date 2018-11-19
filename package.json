@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "serve": "lite-server -c ./config/bs-config.js",
+    "serve": "browser-sync start -c ./config/bs-config.js",
     "watch": "webpack --mode development --config ./config/webpack.config.js -w",
     "build": "webpack --mode production --config ./config/webpack.config.js",
     "start": "concurrently \"npm run serve\" \"npm run watch\""
@@ -16,8 +16,8 @@
     "@babel/core": "^7.1.6",
     "@babel/preset-env": "^7.1.6",
     "babel-loader": "^8.0.4",
+    "browser-sync": "^2.26.3",
     "concurrently": "^4.0.1",
-    "lite-server": "^2.4.0",
     "webpack": "^4.25.1",
     "webpack-cli": "^3.1.2",
     "webpack-glsl-loader": "^1.0.1"
