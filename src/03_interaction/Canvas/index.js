@@ -10,7 +10,7 @@ import { Vector2 } from 'three/src/math/Vector2';
 export default class Canvas {
   constructor() {
     // スクロール量
-    this.scrollY = 0;
+    this.scrollY = window.scrollY;
 
     // マウス座標
     this.mouse = new Vector2(0, 0);
