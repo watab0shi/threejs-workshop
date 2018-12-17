@@ -1,3 +1,8 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 html {
   height: 100%;
 }
@@ -5,6 +10,7 @@ html {
 body {
   margin: 0;
   height: 100%;
+  background-color: #000;
 }
 
 #canvas-container {
@@ -18,4 +24,24 @@ body {
   display: block;
   width: 100%;
   height: 100%;
+}
+
+#scroll-container {
+  position: relative;
+  width: 100%;
+  height: 200%;
+}
+
+#scroll-container_title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  color: #fff;
+  font-size: 7em;
+  letter-spacing: 0.05em;
+  font-family: sans-serif;
+  font-style: italic;
+  font-weight: bold;
 }
