@@ -76,7 +76,8 @@ export default class Canvas {
     this.mesh.rotation.y = sec * (Math.PI / 4);
 
     // スクロールに追従させる
-    this.mesh.position.y = this.scrollY * 0.5;
+    this.mesh.position.y = this.scrollY;
+    // this.mesh.position.y = this.scrollY * 0.5;// パララックス
 
     // 画面に表示
     this.renderer.render(this.scene, this.camera);
