@@ -59,16 +59,12 @@ export default class Canvas {
 
     // ジオメトリとマテリアルからメッシュを作成
     this.mesh = new Mesh(geo, mat);
-    // this.mesh.position.z = -depth / 2;// 奥行きの半分前に出ているのを下げる
 
     // ウィンドウ中心からDOMRect中心へのベクトルを求めてオフセットする
     const center = new Vector2(rect.x + rect.width / 2, rect.y + rect.height / 2);
     const diff   = new Vector2(center.x - this.w / 2, center.y - this.h / 2);
     this.mesh.position.set(diff.x, -(diff.y + this.scrollY), -depth / 2);
     this.offsetY = this.mesh.position.y;
-
-    // this.mesh.rotation.x = Math.PI / 4;
-    // this.mesh.rotation.y = Math.PI / 4;
 
     // メッシュをシーンに追加
     this.scene.add(this.mesh);
