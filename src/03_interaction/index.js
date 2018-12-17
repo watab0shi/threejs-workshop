@@ -1,6 +1,6 @@
 import Canvas from './Canvas';
 
-export default class Page02 {
+export default class Page03 {
   constructor() {
     const canvas = new Canvas();
 
