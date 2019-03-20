@@ -1,14 +1,20 @@
 // fragment shader ( フラグメントシェーダー、ピクセルシェーダー )
-// main 関数でピクセルひとつに対しての処理を記述する
-// GPU側で、シェーダーが適用されたオブジェクトの全てのピクセルに対してこの処理が走る
+// このファイルに各ピクセルごとの処理を記述します
 
-// 頂点シェーダーから渡ってくる変数
-varying vec2 vUv;
+varying vec2 vUv;// 頂点シェーダーから varying 変数を受け取る
+
+uniform float uAspect;// 画面のアスペクト比
+uniform float uTime;// 画面のアスペクト比
 
 void main() {
-  // UV座標の x を r に、y を g にいれる
-  vec4 color = vec4(vUv.x, vUv.y, 1.0, 1.0);
+  vec2 uv = vec2( vUv.x * uAspect, vUv.y );
+  vec2 center = vec2( .5 * uAspect, .5 );// 画面の中心
+  float radius = 0.05 + sin( uTime * 2.0 ) * 0.025;// 半径をアニメーションさせる
+  float dist = radius / length( uv - center );// 半径を、中心から現在のピクセルへのベクトルの距離で割る
+  dist = clamp( dist, 0.0, 1.0 );// 値の範囲を 0.0 ~ 1.0 に制限
+  vec4 color = vec4( vec3( dist ), 1.0 );
 
-  // ピクセルシェーダーの最後で gl_FragColor に vec4 で rgba を入れて最終的な色を決定する
-  gl_FragColor = color;
+  color *= vec4( 0.0, 1.0, 0.0, 1.0 );// 色をつける
+
+  gl_FragColor = color;// gl_FragColor に vec4 型（rgba）の色を入れることでピクセル色を決定する。
 }
