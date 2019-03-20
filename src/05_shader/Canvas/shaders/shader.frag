@@ -10,9 +10,9 @@ void main() {
   vec2 uv = vec2( vUv.x * uAspect, vUv.y );
   vec2 center = vec2( .5 * uAspect, .5 );// 画面の中心
   float radius = 0.05 + sin( uTime * 2.0 ) * 0.025;// 半径をアニメーションさせる
-  float dist = radius / length( uv - center );// 半径を、中心から現在のピクセルへのベクトルの距離で割る
-  dist = clamp( dist, 0.0, 1.0 );// 値の範囲を 0.0 ~ 1.0 に制限
-  vec4 color = vec4( vec3( dist ), 1.0 );
+  float lightness = radius / length( uv - center );// 半径を、中心から現在のピクセルへのベクトルの距離で割る
+  lightness = clamp( lightness, 0.0, 1.0 );// 値の範囲を 0.0 ~ 1.0 に制限
+  vec4 color = vec4( vec3( lightness ), 1.0 );
 
   color *= vec4( 0.0, 1.0, 0.0, 1.0 );// 色をつける
 
