@@ -4,6 +4,8 @@ export default class Page03 {
   constructor() {
     const canvas = new Canvas();
 
+    canvas.scrolled(window.scrollY);
+
     window.addEventListener('mousemove', e => {
       canvas.mouseMoved(e.clientX, e.clientY);
     });
